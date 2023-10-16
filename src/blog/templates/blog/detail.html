@@ -1,0 +1,16 @@
+{% extends 'projetplanning/base.html' %}
+{% block content %}
+
+<body>
+<a href="/blog/page_01">Retour liste collaborateurs</a>
+<h2> {{ collaborator.name }}</h2>
+<h2> {{ collaborator.job }}</h2>
+        {% if collaborator.thumbnail %}
+        <div style="height: 200px;"><img src="{{ collaborator.thumbnail.url }}" style="max-width: 150px; max-height: 200px;"></div>
+        {% else %}
+        <div style="height: 200px; justify-content: center;"><em>Image non disponible</em></div>
+        {% endif %}
+<p> {{ collaborator.job_description}} </p>
+</body>
+
+{% endblock %}

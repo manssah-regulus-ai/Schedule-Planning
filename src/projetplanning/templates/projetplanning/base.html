@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Planning App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+    /* Style pour la barre de navigation */
+    nav {
+      background-color: hsla(50, 33%, 50%, .4); /* Couleur d'arrière-plan */
+      overflow: hidden;
+    }
+
+    /* Style pour les liens de la barre de navigation */
+    nav a {
+      float: left; /* Aligner les liens à gauche */
+      display: block;
+      color: black; /* Couleur du texte */
+      text-align: center;
+      padding: 14px 16px; /* Espacement entre les liens */
+      text-decoration: none;
+    }
+
+    /* Style pour les liens au survol de la souris */
+    nav a:hover {
+      background-color: hsla(50, 33%, 25%, .75); /* Couleur de fond au survol */
+      color: white; /* Couleur du texte au survol */
+    }
+  </style>
+</head>
+<nav>
+  <a href="/">Accueil</a>
+  <a>Planning</a>
+  <a href="/blog/page_01">Collaborateurs</a>
+  <a href="/admin">Admin</a>
+</nav>
+{% block content %}
+
+{% endblock %}
+
+</html>
