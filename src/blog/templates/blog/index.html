@@ -1,9 +1,16 @@
 {% extends 'projetplanning/base.html' %}
 {% block content %}
 
-<body class="background">
+<body>
 
-<div class="container">
+<div style="height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;">
     <h1>Bienvenue dans l'application de planning</h1>
     <h2>Aujourd'hui nous sommes le {{date|date:"d F Y"}}</h2>
     <h3>Il est actuellement {{date|date:"H\hi"}}</h3>

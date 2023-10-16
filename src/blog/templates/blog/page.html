@@ -6,13 +6,13 @@
 
     <!-- Votre script jQuery pour la mise à jour automatique -->
     <script>
-        $(document).ready(function () {
-            // Détecter les changements dans la liste déroulante et soumettre le formulaire
-            $('select[name="magasin"]').on('change', function () {
-                $(this).closest('form').submit();
-            });
+    $(document).ready(function () {
+        // Détecter les changements dans les listes déroulantes et soumettre le formulaire approprié
+        $('select[name="magasin"], select[name="job"]').on('change', function () {
+            $(this).closest('form').submit();
         });
-    </script>
+    });
+</script>
 
 <style>
   /* Style du formulaire */
@@ -26,18 +26,20 @@
     background-color: #fff; /* Couleur de fond de la liste déroulante */
     font-size: 16px;
   }
+  select:hover {
+    background-color: #DADADA;
+  }
 
   /* Style du bouton */
   .button-link {
     width: 190px;
     height: 30px;
     margin-left: 25px;
-    margin-top:5px;
+    margin-top:35px;
     display: inline-block;
-    background-color: hsla(50, 33%, 25%, .6); /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte du bouton */
+    background-color: #DADADA; /* Couleur de fond du bouton */
+    color: black; /* Couleur du texte du bouton */
     text-decoration: none; /* Supprime les soulignements de lien */
-    border: 1px solid hsla(50, 33%, 50%, .6); /* Bordure du bouton */
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
@@ -46,35 +48,54 @@
 
   /* Lorsque le bouton est survolé */
   .button-link:hover {
-    background-color: #0056b3; /* Couleur de fond au survol */
-    border: 1px solid #0056b3; /* Bordure au survol */
-  }
+    background-color: #8A8A8A; /* Couleur de fond au survol */
+    color: white;}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
 
 </style>
 
 
 
-<body class="background" style="background-color: hsla(50, 33%, 25%, .75)">
+<body>
 
 <div style="display: flex; height: 100%;">
 
   <!-- Colonne de gauche pour les filtres -->
-  <div style="width: 18%; background-color: hsla(50, 33%, 95%, .92); ">
+  <div style="width: 18%; ">
     <p style="margin-top: 35px;margin-left: 25px">Filtrer par magasin : </p>
     <form method="get" style="  width: 100%; border-radius:5px; ;margin-left: 25px">
        {{ form.magasin }}
     </form>
 
+    <p style="margin-top: 35px;margin-left: 25px">Filtrer par statut : </p>
+      <form method="get" style="  width: 100%; border-radius:5px; ;margin-left: 25px">
+    {{ job_filter_form.job }}
+        </form>
+
       <a href="/admin" class="button-link">Ajouter un collaborateur</a>
   </div>
 
   <!-- Colonne de droite pour les collaborateurs -->
-  <div style="display: flex; flex-wrap: wrap; align-content: start; background-color: hsla(50, 33%, 95%, .92);
+  <div style="display: flex; flex-wrap: wrap; align-content: start;
   height: 100%; text-align: center; justify-content: center; align-items: center; flex: 1;">
 
     {% for collaborator in collaborator %}
-      <div style="display: inline-block; text-align: center; margin: 10px; width: 170px; height: 270px; padding: 10px;
-      border: 1px solid #ccc; border-radius:5px; background-color: rgba(250, 250, 249, 0.5)">
+      <div class="card" style="display: inline-block; text-align: center; margin: 10px; width: 170px; height: 270px; padding: 10px;
+      border: 1px solid #ccc; border-radius:5px;">
         {% if collaborator.thumbnail %}
         <div style="height: 200px;"><img src="{{ collaborator.thumbnail.url }}" style="max-width: 150px; max-height: 200px;"></div>
         {% else %}

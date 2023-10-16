@@ -1,16 +1,76 @@
 {% extends 'projetplanning/base.html' %}
 {% block content %}
 
+<style>
+ .center-text > div {
+    text-align: center;
+    transition: box-shadow 0.3s; /* Ajoute une transition pour l'effet de survol */
+    border: 1px solid #DEDEDC;
+    border-bottom-width: 4px;
+    border-radius: 6px;
+    font-weight: normal;
+    flex: 1;
+  }
+  .center-text > div:hover {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2); /* Ajoute une ombre lors du survol */
+    font-weight: normal;
+  }
+</style>
+
 <body>
-<a href="/blog/page_01">Retour liste collaborateurs</a>
-<h2> {{ collaborator.name }}</h2>
-<h2> {{ collaborator.job }}</h2>
-        {% if collaborator.thumbnail %}
-        <div style="height: 200px;"><img src="{{ collaborator.thumbnail.url }}" style="max-width: 150px; max-height: 200px;"></div>
-        {% else %}
-        <div style="height: 200px; justify-content: center;"><em>Image non disponible</em></div>
-        {% endif %}
-<p> {{ collaborator.job_description}} </p>
+
+  <div class="center-text" style="display: flex;  gap: 10px; margin: 10px 50px 20px 50px;">
+
+          <div>
+            <h4>Nombre d'heures éffectuées
+                  (dans la semaine)</h4>
+                  <h4>39h</h4>
+          </div>
+          <div>
+            <h4>Nombre de congés acquis</h4>
+                  <h4>20j</h4>
+          </div>
+          <div>
+            <h4>Taux d'absentéisme
+            (dans le mois)</h4>
+                  <h4></h4>
+          </div>
+          <div>
+            <h4>STAT</h4>
+          </div>
+          <div>
+            <h4>Hello</h4>
+          </div>
+  </div>
+  <div style="display: flex; align-items: center; background-color: #ECECEA; margin: 10px 50px 20px 50px;">
+    <div style="width: 15%;">
+      {% if collaborator.thumbnail %}
+        <div style="height: 300px; display: flex; justify-content: center; align-items: center; ">
+
+          <img src="{{ collaborator.thumbnail.url }}" style="max-width: 150px; max-height: 300px;">
+        </div>
+      {% else %}
+        <div style="height: 200px; display: flex; justify-content: center; align-items: center; border: solid #DEDEDC;">
+          <em>Image non disponible</em>
+        </div>
+      {% endif %}
+    </div>
+
+    <div style="width: 85%; margin-right: 10px;";>
+      <h4>Nom : {{ collaborator.name }}</h4>
+      <h4>Poste : {{ collaborator.job }}</h4>
+
+      <p style="text-align: justify;">Description : {{ collaborator.job_description }}</p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>
 </body>
 
 {% endblock %}
