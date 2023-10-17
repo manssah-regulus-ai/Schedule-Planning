@@ -12,6 +12,7 @@ class CollaboratorFilterForm(forms.Form):
     magasin = forms.ChoiceField(choices=CHOICES, required=False)
 
 
+
 class JobFilterForm(forms.Form):
     job_choices = [("", "Tous")] + list(Collaborator.objects.values_list("job", "job").distinct())
-    job = forms.ChoiceField(choices=job_choices, required=False, label="Filtrer par job")
+    jobs = forms.MultipleChoiceField(choices=job_choices, required=False, widget=forms.SelectMultiple(attrs={'size': 5}), label="Filtrer par job")

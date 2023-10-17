@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from datetime import datetime
 
-from blog.forms import CollaboratorFilterForm, JobFilterForm
+from blog.forms import CollaboratorFilterForm
 from blog.models import Collaborator
 
 
@@ -22,13 +22,7 @@ def article(request):
         if magasin_filter != '':
             collaborators = collaborators.filter(Q(magasin=magasin_filter) | Q(magasin__contains=magasin_filter))
 
-    job_filter_form = JobFilterForm(request.GET)
-    job_filter = request.GET.get("job")
-    if job_filter and job_filter != "Tous":
-        collaborators = collaborators.filter(job=job_filter)
-
-    return render(request, f'blog/page.html', context={"collaborator": collaborators, 'form': form,
-                                                       'job_filter_form': job_filter_form,})
+    return render(request, f'blog/page.html', context={"collaborator": collaborators, 'form': form})
 
 
 def collab_detail(request, slug):

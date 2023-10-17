@@ -5,10 +5,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Votre script jQuery pour la mise à jour automatique -->
-    <script>
+<script>
     $(document).ready(function () {
-        // Détecter les changements dans les listes déroulantes et soumettre le formulaire approprié
+        // Détecter les changements dans les listes déroulantes
         $('select[name="magasin"], select[name="job"]').on('change', function () {
+            // Soumettre automatiquement le formulaire parent
             $(this).closest('form').submit();
         });
     });
@@ -64,7 +65,6 @@
 .container {
   padding: 2px 16px;
 }
-</style>
 
 </style>
 
@@ -81,10 +81,6 @@
        {{ form.magasin }}
     </form>
 
-    <p style="margin-top: 35px;margin-left: 25px">Filtrer par statut : </p>
-      <form method="get" style="  width: 100%; border-radius:5px; ;margin-left: 25px">
-    {{ job_filter_form.job }}
-        </form>
 
       <a href="/admin" class="button-link">Ajouter un collaborateur</a>
   </div>
