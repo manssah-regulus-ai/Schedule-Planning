@@ -20,10 +20,9 @@ from django.conf.urls.static import static
 
 from . import settings
 from .views import index
-from blog.views import index as blog_index
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('blog/', include("blog.urls")),
-    path('', index, name='index'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path("admin/", admin.site.urls),
+                  path('blog/', include("blog.urls")),
+                  path('', index, name='index'),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
