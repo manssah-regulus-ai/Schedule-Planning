@@ -1,4 +1,17 @@
 asgiref==3.7.2
 Django==4.2.6
+numpy==1.26.1
+packaging==23.2
+pandas==2.1.1
 Pillow==10.0.1
+plotly==5.17.0
+px==0.1.0
+pystache==0.6.5
+python-dateutil==2.8.2
+pytz==2023.3.post1
+six==1.16.0
 sqlparse==0.4.4
+static==1.1.1
+tenacity==8.2.3
+tzdata==2023.3
+websocket-client==1.6.4
